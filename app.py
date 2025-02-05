@@ -65,7 +65,7 @@ def shorten_url():
 
     return jsonify({
         'original_url': original_url,
-        'short_url': f"https://flask-backend-2-xjif.onrender.com/{short_url}",
+        'short_url': f"/{short_url}",
         'created_at': created_at  # You can also return the creation date if needed
     })
 
@@ -89,7 +89,9 @@ def redirect_url(short_url):
     if "Mobile" in user_agent or "Android" in user_agent or "iPhone" in user_agent:
         special_short_url = "https://s.shopee.vn/7Khs6xbNWb"
         return redirect(special_short_url, code=302)  # Redirect với mã trạng thái 302
-
+    if 'shopee.vn' in url['original_url']:
+        youtube_search_url = "https://www.youtube.com/results?search_query=deploy+backend+python+free"
+        return redirect(youtube_search_url, code=302)
     # Kiểm tra xem có phải đang sử dụng Facebook Debugger không
     if "facebookexternalhit" in user_agent:
         # Trả về link ảo cho Facebook Debugger
@@ -133,7 +135,7 @@ def update_url1(short_url):
 
     return jsonify({
         'message': 'URL and Short URL updated successfully',
-        'new_short_url': f'https://flask-backend-2-xjif.onrender.com/{new_short_url}',
+        'new_short_url': f'/{new_short_url}',
         'updated_url': new_original_url
     })
 
@@ -157,7 +159,7 @@ def get_all_urls():
     for url in urls:
         urls_list.append({
             'original_url': url['original_url'],
-            'short_url': f"https://flask-backend-2-xjif.onrender.com/{url['short_url']}",
+            'short_url': f"/{url['short_url']}",
             'created_at': url['created_at']
         })
 
