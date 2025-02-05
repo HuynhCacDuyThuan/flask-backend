@@ -34,6 +34,11 @@ def create_table():
 
 def generate_short_url():
     return ''.join(random.choices(string.ascii_letters + string.digits, k=6))
+
+@app.route('/')
+def home():
+    return "Welcome to the URL shortener API! Use /shorten to shorten URLs."
+
 @app.route('/shorten', methods=['POST'])
 def shorten_url():
     original_url = request.json.get('url')
@@ -262,4 +267,4 @@ def get_daily_stats():
 
 if __name__ == '__main__':
     create_table()  # Tạo bảng khi chạy ứng dụng
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=10000)
