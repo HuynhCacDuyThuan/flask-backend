@@ -65,7 +65,7 @@ def shorten_url():
 
     return jsonify({
         'original_url': original_url,
-        'short_url': f"https://60ab-2402-800-620c-907d-49bb-fcaa-769a-aa6f.ngrok-free.app/{short_url}",
+        'short_url': f"https://flask-backend-2-xjif.onrender.com/{short_url}",
         'created_at': created_at  # You can also return the creation date if needed
     })
 
@@ -133,7 +133,7 @@ def update_url1(short_url):
 
     return jsonify({
         'message': 'URL and Short URL updated successfully',
-        'new_short_url': f'https://60ab-2402-800-620c-907d-49bb-fcaa-769a-aa6f.ngrok-free.app/{new_short_url}',
+        'new_short_url': f'https://flask-backend-2-xjif.onrender.com/{new_short_url}',
         'updated_url': new_original_url
     })
 
@@ -157,7 +157,7 @@ def get_all_urls():
     for url in urls:
         urls_list.append({
             'original_url': url['original_url'],
-            'short_url': f"https://60ab-2402-800-620c-907d-49bb-fcaa-769a-aa6f.ngrok-free.app/{url['short_url']}",
+            'short_url': f"https://flask-backend-2-xjif.onrender.com/{url['short_url']}",
             'created_at': url['created_at']
         })
 
