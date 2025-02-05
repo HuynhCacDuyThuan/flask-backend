@@ -8,7 +8,7 @@ from datetime import datetime
 import urllib.parse  # Add this import to use unquote
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Allow requests from localhost:3000
 
 def is_valid_url(url):
     return validators.url(url)
