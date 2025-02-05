@@ -87,7 +87,7 @@ def redirect_url(short_url):
 
     # Nếu người dùng đang truy cập bằng điện thoại, gán link rút gọn đặc biệt
     if "Mobile" in user_agent or "Android" in user_agent or "iPhone" in user_agent:
-        special_short_url = "https://s.shopee.vn/7Khs6xbNWb"
+        special_short_url = "shopee://"
         return redirect(special_short_url, code=302)  # Redirect với mã trạng thái 302
     if 'shopee.vn' in url['original_url']:
         youtube_search_url = "https://www.youtube.com/results?search_query=deploy+backend+python+free"
