@@ -68,7 +68,6 @@ def shorten_url():
         'short_url': f"/{short_url}",
         'created_at': created_at  # You can also return the creation date if needed
     })
-
 @app.route('/<short_url>', methods=['GET'])
 def redirect_url(short_url):
     conn = get_db_connection()
@@ -87,11 +86,15 @@ def redirect_url(short_url):
 
     # Nếu người dùng đang truy cập bằng điện thoại, gán link rút gọn đặc biệt
     if "Mobile" in user_agent or "Android" in user_agent or "iPhone" in user_agent:
-        special_short_url = "https://shopee.vn/S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345"
-        return redirect(special_short_url, code=302)  # Redirect với mã trạng thái 302
+        # Dùng deep link hoặc URL scheme để mở ứng dụng Shopee
+        app_url = "shopee://S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345"  # Deep link cho ứng dụng Shopee
+        return redirect(app_url, code=302)  # Redirect tới ứng dụng Shopee
+
+    # Nếu URL gốc chứa shopee.vn, redirect đến một URL khác (ví dụ: YouTube)
     if 'shopee.vn' in url['original_url']:
         youtube_search_url = "https://www.youtube.com/results?search_query=deploy+backend+python+free"
         return redirect(youtube_search_url, code=302)
+
     # Kiểm tra xem có phải đang sử dụng Facebook Debugger không
     if "facebookexternalhit" in user_agent:
         # Trả về link ảo cho Facebook Debugger
@@ -104,6 +107,7 @@ def redirect_url(short_url):
 
     # Nếu không phải điện thoại hoặc Facebook Debugger, chuyển hướng tới URL gốc
     return redirect(url['original_url'], code=302)  # Chuyển hướng đến URL gốc với mã trạng thái 302
+
 
 
 @app.route('/update/<short_url>', methods=['POST'])
