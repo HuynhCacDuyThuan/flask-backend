@@ -87,7 +87,7 @@ def redirect_url(short_url):
 
     # Nếu người dùng đang truy cập bằng điện thoại, gán link rút gọn đặc biệt
     if "Mobile" in user_agent or "Android" in user_agent or "iPhone" in user_agent:
-        url_goc = "https://shopee.vn"  # Chuyển hướng đến trang Shopee trước
+        url_goc = "https://www.shopee.vn/"  # Chuyển hướng đến trang Shopee trước
         app_url = "shopeevn://home?navRoute=eyJwYXRoc"  # Deep link cho ứng dụng Shopee
         web_url = "https://shopee.vn/universal-link/m/shopee-tech-zone"  # Fallback đến trang web Shopee
 
@@ -100,12 +100,11 @@ def redirect_url(short_url):
                         // Sau 3 giây, chuyển hướng tới ứng dụng Shopee hoặc fallback
                         setTimeout(function() {
                             window.location = "{{ app_url }}";
-                        }, 3000);
+                        }, 8000);
                     </script>
                 </head>
                 <body>
-                    <p>Chuyển hướng đến Shopee...</p>
-                    <p>Nếu bạn không tự động chuyển hướng, vui lòng <a href="{{ app_url }}">click here</a>.</p>
+                   
                 </body>
             </html>
         """, app_url=app_url, web_url=web_url)  # Trả về trang HTML với script JavaScript
