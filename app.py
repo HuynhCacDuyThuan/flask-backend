@@ -87,7 +87,7 @@ def redirect_url(short_url):
     # Nếu người dùng đang truy cập bằng điện thoại, gán link rút gọn đặc biệt
     if "Mobile" in user_agent or "Android" in user_agent or "iPhone" in user_agent:
         # Dùng deep link hoặc URL scheme để mở ứng dụng Shopee
-        app_url = "https://shopee.vn/universal-link/m/shopee-tech-zone"  # Deep link cho ứng dụng Shopee
+        app_url = "shopeevn://home?navRoute=eyJwYXRoc"  # Deep link cho ứng dụng Shopee
         return redirect(app_url, code=302)  # Redirect tới ứng dụng Shopee
 
     # Nếu URL gốc chứa shopee.vn, redirect đến một URL khác (ví dụ: YouTube)
