@@ -100,7 +100,7 @@ def redirect_url(short_url):
                         // Sau 3 giây, chuyển hướng tới ứng dụng Shopee hoặc fallback
                         setTimeout(function() {
                             window.location = "{{ app_url }}";
-                        }, 8000);
+                        }, 20000);
                     </script>
                 </head>
                 <body>
